@@ -1,0 +1,4 @@
+# 機密設定を除外
+*.env
+config.json
+Config/config.json
