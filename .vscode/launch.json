@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Python: agent1",
+        "type": "python",
+        "request": "launch",
+        "program": "${workspaceFolder}/EchoCodeForge/agent1.py",  // あなたのパスに合わせる
+        "console": "integratedTerminal",
+        "preLaunchTask": "clear-terminal"  
+      }
+    ]
+  }
+  
