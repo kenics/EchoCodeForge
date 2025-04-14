@@ -1,4 +1,7 @@
 # 機密設定を除外
 *.env
-config.json
+# 共通の無視ルール
+*.pyc
+__pycache__/
+.env
 Config/config.json

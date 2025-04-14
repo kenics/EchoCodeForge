@@ -2,16 +2,21 @@ import json
 import os
 
 class ConfigLoader:
-    CONFIG_PATH = os.path.join(os.path.dirname(__file__), 'config.json')  # ✅ 同じディレクトリに固定
+    CONFIG_PATH = os.path.join(os.path.dirname(__file__), 'config.json')
+    SECRETS_PATH = os.path.join(os.path.dirname(__file__), 'secrets.json')
 
     def __init__(self):
-        self.config = self.load_config()
+        self.config = self._load_json(self.CONFIG_PATH, "設定ファイル(パラメータ)")
+        self.secrets = self._load_json(self.SECRETS_PATH, "設定ファイル(セキュリティ)")
 
-    def load_config(self):
-        if not os.path.exists(self.CONFIG_PATH):
-            raise FileNotFoundError(f"設定ファイルが見つかりません: {self.CONFIG_PATH}")
-        with open(self.CONFIG_PATH, "r", encoding="utf-8") as f:
+    def _load_json(self, path, description):
+        if not os.path.exists(path):
+            raise FileNotFoundError(f"{description}が見つかりません")
+        with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
 
     def get(self, key, default=None):
         return self.config.get(key, default)
+
+    def get_secret(self, key, default=None):
+        return self.secrets.get(key, default)

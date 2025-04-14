@@ -1,0 +1,7 @@
+{
+  "default_model": "gpt-4",
+  "ai_enabled": true,
+  "save_response_to_file": true,
+  "load_response_from_file": false,
+  "response_cache_path": "response_cache/last_dsl.txt"
+}
