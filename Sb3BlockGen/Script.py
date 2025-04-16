@@ -1,12 +1,13 @@
 class Script:
     def __init__(self, starting_block=None):
         self.starting_block = starting_block
-        self.blocks = []
+        self.blocks = []  # 手動追加されたブロックを保持
         if starting_block:
             starting_block.topLevel = True
             self.blocks.append(starting_block)
 
     def add_block(self, block):
+        """古い set_next チェーン形式にも対応可能"""
         if not self.starting_block:
             self.starting_block = block
             block.topLevel = True
@@ -17,9 +18,5 @@ class Script:
             current.set_next(block)
 
     def collect_blocks(self):
-        current = self.starting_block
-        collected = []
-        while current:
-            collected.append(current)
-            current = current.next
-        return collected
+        """project.json の blocks フィールド出力用"""
+        return self.blocks  # append されたブロックをそのまま返す

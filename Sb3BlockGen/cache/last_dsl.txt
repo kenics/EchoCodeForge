@@ -1,8 +1,12 @@
 program = Program()
 
-cat = Sprite(name='Cat')
-cat_script = Script()
-cat_script.blocks.append(Block(type='say', inputs={"MESSAGE": Value(type='string', value='こんにちは')}))
-cat.scripts.append(cat_script)
+cat = Sprite(name="Cat")
 
-program.sprites.append(cat)
+script = Script(sprite=cat)
+start_event = Block(type="event_whenflagclicked")
+say_hello = Block(type="looks_say", inputs={"MESSAGE": Value(type="string", value="こんにちは")})
+move_10_steps = Block(type="motion_movesteps", inputs={"STEPS": Value(type="number", value=10)})
+script.blocks = [start_event, say_hello, move_10_steps]
+
+cat.scripts = [script]
+program.sprites = [cat]

@@ -6,6 +6,19 @@ class Program:
         self.variables = {}
         self.variable_added = False  #ユーザー定義の変数が追加されたかどうか
         self.sounds = []
+        self.stage_costumes = [] # ステージ用コスチューム(背景)
+
+    def add_stage_costume(self, name, assetId, dataFormat="svg", rotationCenterX=240, rotationCenterY=180):
+        md5ext = f"{assetId}.{dataFormat}"
+        self.stage_costumes.append({
+            "name": name,
+            "dataFormat": dataFormat,
+            "assetId": assetId,
+            "md5ext": md5ext,
+            "rotationCenterX": rotationCenterX,
+            "rotationCenterY": rotationCenterY
+        })
+
 
     def add_sprite(self, sprite: "Sprite"):
         self.sprites.append(sprite)
@@ -44,7 +57,18 @@ class Program:
                 "sampleCount": 1123,
                 "md5ext": "83a9787d4cb6f3b7632b4ddfebf74367.wav"
             })
-
+        
+        # コスチューム未定義の場合「背景1」を追加
+            if not self.stage_costumes:
+                self.stage_costumes.append({
+                    "name": "背景1",
+                    "dataFormat": "svg",
+                    "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+                    "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                })
+        
         stage = {
             "isStage": True,
             "name": "Stage",
@@ -53,7 +77,7 @@ class Program:
             "broadcasts": {},
             "blocks": {},
             "currentCostume": 0,
-            "costumes": [],
+            "costumes": self.stage_costumes,
             "sounds": self.sounds,
             "volume": 100,
             "layerOrder": 0,
@@ -69,7 +93,7 @@ class Program:
             "extensions": [],
             "meta": {
                 "semver": "3.0.0",
-                "vm": "0.2.0",
-                "agent": "scratch-coding-ai"
+                "vm": "11.0.0-beta.2",
+                "agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36"
             }
         }

@@ -155,10 +155,14 @@ class CodingAIAgent:
         os.makedirs(temp_dir, exist_ok=True)
 
         # project.json を書き出す
-        with open(os.path.join(temp_dir, "project.json"), "w", encoding="utf-8") as f:
-            json.dump(project_json, f, ensure_ascii=False, indent=2)
-
+        json_path = os.path.join(temp_dir, "project.json")
+        with open(json_path, "w", encoding="utf-8") as f:
+            if compress:
+                json.dump(project_json, f, ensure_ascii=False, separators=(",", ":"))  # 改行なし
+            else:
+                json.dump(project_json, f, ensure_ascii=False, indent=2)  # 改行あり（可読）
         # ダミーのSVG（コスチュームファイル）
+        
         asset_id = "f996b84d5ba4a93f7d31c52e3fd5a3ed"
         svg_path = os.path.join(temp_dir, f"{asset_id}.svg")
         with open(svg_path, "w", encoding="utf-8") as f:
