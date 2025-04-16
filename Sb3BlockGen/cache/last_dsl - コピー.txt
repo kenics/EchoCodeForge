@@ -1,0 +1,15 @@
+program = Program()
+
+cat = Sprite("Cat")
+program.add_sprite(cat)
+
+script = Script()
+cat.add_script(script)
+
+greeting_block = Block('say_hello')
+script.add_block(greeting_block)
+greeting_block.values.append(Value('STRING', 'こんにちは'))
+
+move_block = Block('move')
+script.add_block(move_block)
+move_block.values.append(Value('NUMBER', 10))

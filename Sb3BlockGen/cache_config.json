@@ -1,0 +1,8 @@
+{
+    "_comment": "open AI からの回答を保存するファイルのpath",
+    "response_cache_path": "Sb3BlockGen/cache/last_dsl.txt",
+    "_comment_sb3": "出力ファイルの設定",
+    "sb3_output_dir": "Sb3BlockGen/out",
+    "sb3_filename_format": "output_%Y%m%d_%H%M%S.sb3"
+  }
+  

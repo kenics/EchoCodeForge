@@ -1,0 +1,8 @@
+program = Program()
+
+cat = Sprite(name='Cat')
+cat_script = Script()
+cat_script.blocks.append(Block(type='say', inputs={"MESSAGE": Value(type='string', value='こんにちは')}))
+cat.scripts.append(cat_script)
+
+program.sprites.append(cat)

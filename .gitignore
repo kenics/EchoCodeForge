@@ -1,7 +1,11 @@
-# 機密設定を除外
-*.env
-# 共通の無視ルール
+# Python キャッシュファイル
 *.pyc
 __pycache__/
+
+# 機密設定
 .env
+*.env
 Config/config.json
+
+# 生成ファイル
+Sb3BlockGen/out/*
