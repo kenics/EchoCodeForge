@@ -39,6 +39,7 @@ class Sprite:
     def to_scratch_format(self):
         blocks = {}
         for script in self.scripts:
+            script.link_blocks()
             for block in script.collect_blocks():
                 blocks[block.id] = block.to_dict()
 
