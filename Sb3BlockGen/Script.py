@@ -5,7 +5,7 @@ class Script:
         self.blocks = []  # 手動追加されたブロックを保持
         if starting_block:
             starting_block.topLevel = True
-            self.blocks.append(starting_block)
+            self.blocks.append(starting_block
 
     def add_block(self, block):
         """古い set_next チェーン形式にも対応可能"""

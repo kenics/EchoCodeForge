@@ -9,3 +9,4 @@ Config/config.json
 
 # 生成ファイル
 Sb3BlockGen/out/*
+temp_scratch/*

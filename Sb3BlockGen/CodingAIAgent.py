@@ -1,4 +1,4 @@
-from openai import OpenAI
+import openai
 import traceback
 import re
 import os
@@ -21,8 +21,7 @@ class CodingAIAgent:
          
         # open AI からの回答を保存するファイルのpathの取得
         self.cache_config = self._load_cache_config()
-
-        self.client = OpenAI(api_key=self.api_key)
+        self.client = openai.OpenAI(api_key=self.api_key)
 
         self.dsl_globals = {}
         self._prepare_dsl_env()
